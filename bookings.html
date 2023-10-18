@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="image/x-icon" href="assets/images/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/style.css">    
+    <title>Book a Ride - Qknights Taxi Services</title>
+
+    <style>
+        .booking_container {
+            background-color: #f5f5f5;
+        }
+
+        .booking_form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #map {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Booking Form</h1>
+    <form action="submit_booking.html" method="get">
+        <div>
+            <label for="passengerName">Passenger Name</label>
+            <input type="text" id="passengerName" name="passengerName" placeholder="Enter passenger name" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter email" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+        </div>
+        <div>
+            <label for="pickupLocation">Pickup Location</label>
+            <input type="text" id="pickupLocation" name="pickupLocation" placeholder="Enter pickup location" required>
+        </div>
+        <div>
+            <label for="dropLocation">Drop Location</label>
+            <input type="text" id="dropLocation" name="dropLocation" placeholder="Enter drop location" required>
+        </div>
+        <div>
+        </div>
+        <button type="submit">Book Now</button>
+    </form>
+
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 40.744, lng: -73.994 },
+                zoom: 13,
+            });
+
+            const input = document.getElementById('searchTextField');
+            const searchBox = new google.maps.places.SearchBox(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+            const pickupLocationInput = document.getElementById('pickupLocation');
+            const dropLocationInput = document.getElementById('dropLocation');
+
+            const autocompleteOptions = {
+                types: ['geocode'],
+            };
+
+            const pickupAutocomplete = new google.maps.places.Autocomplete(pickupLocationInput, autocompleteOptions);
+            const dropAutocomplete = new google.maps.places.Autocomplete(dropLocationInput, autocompleteOptions);
+        }
+    </script>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31085.589332952994!2d80.21357821551346!3d13.118266127427688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265054291a09b%3A0x276fe51caf7b48d3!2sPerambur%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1697642719660!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</body>
+</html>
